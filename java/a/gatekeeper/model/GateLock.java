@@ -17,19 +17,19 @@ public class GateLock implements GpioPinListenerDigital
 
   public GateLock()
   {
+    // create gpio controller
     gpio_ = GpioFactory.getInstance();
 
     // IMPORTANT match GPIO_nn constant with correct pin
 
-    pin_ = gpio_.provisionDigitalOutputPin( RaspiPin.GPIO_17,
+    pin_ = gpio_.provisionDigitalOutputPin( RaspiPin.GPIO_00,
                                             "LOCK",
                                             PinState.LOW );
 
     pin_.addListener( this );
 
     pin_.setShutdownOptions( true,
-                             PinState.LOW,
-                             PinPullResistance.OFF );
+                             PinState.LOW );
   }
 
   public void pulseOpen()
